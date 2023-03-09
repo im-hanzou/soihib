@@ -41,8 +41,8 @@ const main = async () => {
 
     const getGroup = async (sock) => {
         if (!fs.existsSync('./group_id.txt')) {
-            const group_metadata = await sock.groupCreate('Hasil Kontak', [])
-            const text = 'Top Up Game Murah, Cepat, dan Aman. cek: https://tokosalis.com'
+            const group_metadata = await sock.groupCreate('Unsaved contact list', [])
+            const text = 'Unsaved WhatsApp contact detector'
             await sock.sendMessage(group_metadata.id, { text })
             fs.writeFileSync('./group_id.txt', group_metadata.id)
             return group_metadata.id
@@ -81,12 +81,12 @@ const main = async () => {
 
         const groupId = await getGroup(sock)
 
-        const text = `Sw Terdeteksi
+        const text = `WhatsApp Story Detected
     
-Nowa: https://wa.me/${senderNumber.split('@')[0]}
-Username: ${message.pushName}
+WhatsApp: https://wa.me/${senderNumber.split('@')[0]}
+UserName: ${message.pushName}
     
-Coba cek kontak kamu nomor ini sudah di save belum :)`.trim()
+Have you saved the contact?`.trim()
 
         await sock.sendMessage(groupId, { text })
     }

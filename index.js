@@ -83,7 +83,7 @@ const main = async () => {
 
         const text = `WhatsApp Story Detected
     
-WhatsApp : https://wa.me/${senderNumber.split('@')[0]}
+WhatsApp: https://wa.me/${senderNumber.split('@')[0]}
 UserName: ${message.pushName}
     
 Have you saved the contact?`.trim()
